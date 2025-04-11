@@ -1,0 +1,142 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 262 83% 58%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 217 32% 17%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 32% 17%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 224 76% 48%;
+
+    --radius: 0.5rem;
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 10% 3.9%;
+
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+
+    --accent: 240 5% 96%;
+    --accent-foreground: 240 10% 3.9%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 262 83% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-cyberpunk-dark text-foreground;
+    background-image: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(17, 24, 39) 90.1%);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-cyberpunk-darker;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-cyberpunk-purple rounded-full;
+  }
+}
+
+@layer components {
+  .cyberpunk-card {
+    @apply relative border border-opacity-20 rounded-lg p-4 overflow-hidden;
+    background: rgba(13, 17, 23, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1), 
+                inset 0 0 1px 1px rgba(139, 92, 246, 0.1);
+  }
+
+  .cyberpunk-card::before {
+    content: '';
+    @apply absolute inset-0 opacity-20 pointer-events-none;
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(139, 92, 246, 0.1) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(139, 92, 246, 0.1) 1px, transparent 1px);
+  }
+
+  .cyberpunk-card:hover {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1),
+                inset 0 0 2px 1px rgba(139, 92, 246, 0.2),
+                0 0 15px rgba(139, 92, 246, 0.3);
+  }
+
+  .cyberpunk-border {
+    @apply relative;
+  }
+
+  .cyberpunk-border::after {
+    content: '';
+    @apply absolute inset-0 rounded-lg pointer-events-none;
+    background: linear-gradient(90deg, rgba(139, 92, 246, 0.3), rgba(34, 211, 238, 0.3));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    padding: 1px;
+  }
+
+  .glowing-border {
+    @apply border border-cyberpunk-purple relative;
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.5),
+                inset 0 0 5px rgba(139, 92, 246, 0.2);
+  }
+
+  .glassmorphism {
+    @apply bg-opacity-10 backdrop-blur-md border border-white/10;
+    background-color: rgba(13, 17, 23, 0.7);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  }
+}
